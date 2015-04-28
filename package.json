@@ -3,6 +3,7 @@
   "version": "2.4.0",
   "description": "A library optimized for concise, principled data graphics and layouts",
   "main": "dist/metricsgraphics.js",
+  "private": true,
   "scripts": {
     "build": "gulp build:js",
     "test": "gulp test",
