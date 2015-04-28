@@ -2490,7 +2490,7 @@ MG.button_layout = function(target) {
 
                     //add the area
                     var areas = svg.selectAll('.mg-main-area.mg-area' + (line_id) + '-color');
-                    var displayArea = args.area && !args.use_data_y_min && !args.y_axis_negative && args.data.length <= 1;
+                    var displayArea = args.area && !args.use_data_y_min && !args.y_axis_negative && args.data.length;
                     if (displayArea) {
                         //if area already exists, transition it
                         if (!areas.empty()) {
@@ -4407,6 +4407,9 @@ MG.data_table = function(args) {
 
 function raw_data_transformation(args) {
     'use strict';
+
+    // dupe our data so we can modify it without adverse effect
+    args.data = MG.clone(args.data);
 
     // We need to account for a few data format cases:
     // #1 [{key:__, value:__}, ...]                              // unnested obj-arrays
