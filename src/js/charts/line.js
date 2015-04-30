@@ -309,9 +309,22 @@
             svg.selectAll('.mg-active-datapoint-container').remove();
 
             //rollover text
+            var rolloverX, rolloverY;
+
+            if (typeof args.rolloverX !== 'undefined') {
+              rolloverX = args.rolloverX;
+            } else {
+              rolloverX = (args.width - args.right);
+            }
+            if (typeof args.rolloverY !== 'undefined') {
+              rolloverY = args.rolloverY;
+            } else {
+              rolloverY = (args.top / 2);
+            }
+
             svg.append('g')
                 .attr('class', 'mg-active-datapoint-container')
-                .attr('transform', 'translate(' + (args.width - args.right) + ',' + (args.top / 2) + ')')
+                .attr('transform', 'translate(' + rolloverX + ',' + rolloverY + ')')
                 .append('text')
                     .attr('class', 'mg-active-datapoint')
                     .classed('mg-active-datapoint-small', args.use_small_class)
