@@ -2452,7 +2452,7 @@ MG.button_layout = function(target) {
             // should we continue with the default line render? A `line.all_series` hook should return false to prevent the default.
             var continueWithDefault = MG.call_hook('line.before_all_series', [args]);
             if (continueWithDefault !== false) {
-                for (var i = args.data.length - 1; i >= 0; i--) {
+                for (var i = 0; i < args.data.length; i++) {
                     this_data = args.data[i];
 
                     // passing the data for the current line
@@ -2614,8 +2614,8 @@ MG.button_layout = function(target) {
                         }
 
                         if (args.legend_target) {
-                            legend = "<span class='mg-line" + line_id  + "-legend-color'>&mdash; "
-                                + this_legend + "&nbsp; </span>" + legend;
+                            legend = legend + "<span class='mg-line" + line_id  + "-legend-color'>&mdash; "
+                                + this_legend + "&nbsp; </span>";
                         } else {
 
                             var last_point = this_data[this_data.length-1];
